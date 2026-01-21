@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Frontend Enhanced IDE (No Node)</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://unpkg.com/monaco-editor@0.39.0/min/vs/loader.js"></script>
+    
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://unpkg.com/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.0/jszip.min.js"></script>
+
+    <script defer src="app.js"></script>
+</head>
+<body data-theme="dark">
+    <div class="app">
+        
+        <aside class="sidebar">
+            <div class="brand">MiniIDE (no-server)</div>
+            
+            <div class="controls">
+                <button id="newFile">+ File</button>
+                <button id="newFolder">📁 Folder</button>
+                <button id="saveAll">Save</button>
+                
+                <input id="upload" type="file" webkitdirectory directory multiple style="display:none">
+                <button id="uploadBtn">Upload Folder</button>
+                <button id="downloadZip">Download ZIP</button>
+            </div>
+
+            <ul id="fileList" class="file-list">
+                </ul>
+        </aside>
+
+        <div id="sidebarResizer" class="resizer vertical-sidebar"></div> 
+
+        <main class="main">
+            
+            <header class="toolbar">
+                <div id="tabs" class="tabs-wrap">
+                    </div>
+                
+                <div class="actions">
+                    <select id="languageSelect">
+                        <option value="javascript">JavaScript</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="python">Python</option>
+                        <option value="cpp">C++</option>
+                        <option value="java">Java</option>
+                    </select>
+                    
+                    <button id="runBtn">Run</button>
+                    <button id="clearPreview">Clear Preview</button>
+                    <button id="togglePreview">Toggle Preview</button>
+                    <button id="themeToggle">Toggle Theme</button>
+                    <button id="copyBtn">Copy</button>
+                </div>
+            </header>
+
+            <div id="editor" class="editor-container">
+                </div>
+            
+            <div id="bottomResizer" class="resizer horizontal"></div>
+
+            <div class="bottom-panel-wrap">
+                <div class="bottom-panel">
+                    
+                    <div class="console-wrap">
+                        <div class="console-header">
+                            <span>Console</span>
+                            <button id="clearConsole">Clear</button>
+                        </div>
+                        <div id="consoleOutput" class="console-output"></div>
+                        
+                        <div id="previewResizer" class="resizer vertical"></div>
+                    </div>
+
+                    <div id="previewWrap" class="preview-wrap">
+                        <iframe id="preview" title="Code Preview" srcdoc="<!doctype html><html><body></body></html>"></iframe>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
